@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crud App sqlite</title>
+</head>
+<body>
+        <div class="container">
+            <h1>Student magt. system</h1>
+            <h2>Add Student</h2>
+            <form action="/add" method="POST">
+        <input type="text" name="name" placeholder="Name">
+        <input type="number" name="age" placeholder="Age">
+        <input type="email" name="email" placeholder="Email">
+        <button type="submit">Add</button>
+    </form>
+
+    <h2>Students List</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{student[0]}}</td>
+            <td>{{student[1]}}</td>
+            <td>{{student[2]}}</td>
+            <td>{{student[3]}}</td>
+            <td>
+                <a href="/edit/{{student[0]}}">✏️ Edit</a>
+                <a href="/delete/{{student[0]}}">❌ Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>    
+        </div>
+</body>
+</html>
